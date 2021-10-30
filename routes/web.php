@@ -1,5 +1,6 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +20,18 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('profile/{user}', [App\Http\Controllers\ProfilesController::class, 'show'])->name('profile.show');
+Route::get('p/create', [App\Http\Controllers\PostsController::class, 'create'])
+    ->name('post.create');
+
+Route::post('p', [App\Http\Controllers\PostsController::class, 'store'])
+    ->name('post.store');
+
+Route::get('profile/{user}', [App\Http\Controllers\ProfilesController::class, 'index'])
+    ->name('profile.index');
+
+Route::get('home', function(){
+    return view('home');
+});
+
