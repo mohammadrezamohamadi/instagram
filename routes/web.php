@@ -31,6 +31,9 @@ Route::post('p', [App\Http\Controllers\PostsController::class, 'store'])
 Route::get('profile/{user}', [App\Http\Controllers\ProfilesController::class, 'index'])
     ->name('profile.index');
 
+Route::get('/p/{post}', [App\Http\Controllers\PostsController::class, 'show'])
+    ->name('post.show');
+
 Route::get('home', function(){
     return view('home');
 });
