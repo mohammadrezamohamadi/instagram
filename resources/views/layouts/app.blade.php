@@ -68,7 +68,7 @@
                                         </a>
 
                                     @endcan
-                                        Add New Post
+
 
 
                                     <a class="dropdown-item" href="/profile/{{Auth::user()->username}}" role="button">

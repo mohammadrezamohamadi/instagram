@@ -8,7 +8,7 @@
                     <div class="card-header">Edit Profile</div>
 
                     <div class="card-body">
-                        <form method="POST" action="profile/{{ $user->username }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{asset('profile').'/'. $user->username}}" enctype="multipart/form-data">
                             @csrf
                             @method('PATCH')
 
