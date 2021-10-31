@@ -4,6 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+
 class CreatePostsTable extends Migration
 {
     /**
@@ -15,12 +16,11 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->foreignIdFor(App\Models\User::class);
             $table->string('caption');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->timestamps();
 
-            $table->index('user_id');
         });
     }
 

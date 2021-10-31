@@ -27,11 +27,8 @@ class PostsController extends Controller
         ]);
 
         $imagePath = request('image')->store('uploads', 'public');
-
-        $image = Image::make(public_path("storage/{$imagePath}"))->fit(1200, 1200);
-        // $image = Image::make(public_path("storage/{$imagePath}"))->fit(500, 500);
-        // $image = Image::make(public_path("storage/{$imagePath}"))->resize(300, 300);
-        // $image = Image::make(public_path("storage/{$imagePath}"))->resize(320, 240);
+//        $image = Image::make(public_path("storage/{$imagePath}"))->fit(1200, 1200);
+        $image = Image::make(public_path("storage/{$imagePath}"))->widen(600, function ($constraint) { $constraint->upsize(); });
         $image->save();
 
         auth()->user()->posts()->create([
@@ -44,7 +41,6 @@ class PostsController extends Controller
     }
     public function show(Post $post)
     {
-        // dd($post);
         return view('posts.show', compact('post'));
     }
 }
