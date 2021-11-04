@@ -68,6 +68,11 @@ class User extends Authenticatable
         return $this->hasMany(Post::class)->orderBy('created_at', 'DESC');
     }
 
+    public function following()
+    {
+        return $this->belongsToMany(Profile::class);
+    }
+
     // change default search by id to username
     public function getRouteKeyName()
     {

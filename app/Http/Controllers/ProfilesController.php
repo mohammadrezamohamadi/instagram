@@ -21,7 +21,11 @@ class ProfilesController extends Controller
      */
     public function index(User $user)
     {
-        return view('profiles.index', compact('user'));
+//        return view('profiles.index', compact('user'));
+        $follows = (auth()->user()) ? auth()->user()->following->contains($user->profile) : false;
+
+        // dd($follows);
+        return view('profiles.index', compact('user', 'follows'));
 
     }
 

@@ -18,6 +18,11 @@ class PostsController extends Controller
         return view('posts.create');
     }
 
+    public function index()
+    {
+        return view('posts.index');
+    }
+
     public function store()
     {
 
